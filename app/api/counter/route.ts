@@ -1,11 +1,10 @@
-let counter = 0;
-
-setInterval(() => {
-  counter++;
-}, 1000);
+const deploymentTime = Date.now();
 
 export async function GET() {
-  return new Response(JSON.stringify({ value: counter }), {
+  const currentTime = Date.now();
+  const elapsedSeconds = Math.floor((currentTime - deploymentTime) / 1000);
+
+  return new Response(JSON.stringify({ value: elapsedSeconds }), {
     headers: { "Content-Type": "application/json" },
   });
 }
